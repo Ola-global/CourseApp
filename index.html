@@ -10,7 +10,10 @@
 
   <header class="navbar">
     <h2 class="logo" onclick="showSection('home')">CourseApp</h2>
-    <nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
       <button class="nav-btn" onclick="showSection('home')">Dashboard</button>
       <button class="nav-btn" onclick="showSection('add')">Add Course</button>
       <button class="nav-btn" onclick="showSection('courses')">Manage List</button>
@@ -92,5 +95,20 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('main-nav');
+      const hamburger = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    }
+    // Close menu when a nav button is clicked
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('main-nav').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>
