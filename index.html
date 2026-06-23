@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CourseApp | Academic Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h2 class="logo" onclick="showSection('home')">CourseApp</h2>
+    <nav>
+      <button class="nav-btn" onclick="showSection('home')">Dashboard</button>
+      <button class="nav-btn" onclick="showSection('add')">Add Course</button>
+      <button class="nav-btn" onclick="showSection('courses')">Manage List</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section id="home" class="view active">
+      <div class="hero-section">
+        <h1 id="welcome-msg">Welcome</h1>
+        <p>Monitor your academic progress and manage your course load efficiently.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="glass stat-card">
+          <span class="stat-label">Total Courses</span>
+          <h2 id="stat-total-courses">0</h2>
+        </div>
+        <div class="glass stat-card">
+          <span class="stat-label">Total Credit Units</span>
+          <h2 id="stat-total-units">0</h2>
+        </div>
+        </div>
+
+      <div class="glass card">
+        <h3>Recently Added</h3>
+        <div id="recent-activity" class="recent-list">
+            </div>
+        <button class="primary-btn" style="margin-top: 20px;" onclick="showSection('add')">+ Create New Course</button>
+      </div>
+    </section>
+
+    <section id="add" class="view">
+      <div class="glass card">
+        <h2 id="formTitle">Add New Course</h2>
+        <p class="form-subtitle">Enter the details below to update your academic record.</p>
+
+        <form id="courseForm">
+          <input type="hidden" id="editIndex" />
+
+          <div class="input-group">
+            <label for="title">Course Title</label>
+            <input type="text" id="title" placeholder="e.g. Web Programming" required />
+          </div>
+
+          <div class="input-group">
+            <label for="code">Course Code</label>
+            <input type="text" id="code" placeholder="e.g. CSC293" required />
+          </div>
+
+          <div class="input-group">
+            <label for="unit">Credit Units</label>
+            <input type="number" id="unit" required min="1" max="6" placeholder="1-6" />
+          </div>
+
+          <button type="submit" class="primary-btn save-btn">
+            Confirm & Save
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section id="courses" class="view">
+      <div class="view-header">
+        <h2>Enrolled Courses</h2>
+        <p>A comprehensive list of your current academic commitments.</p>
+      </div>
+      <div id="courseList" class="course-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 CourseApp | Secure Local Data</p>
+      <p class="designer-credit">Designed & Developed by <strong>Olagraphics</strong></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
