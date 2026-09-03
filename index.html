@@ -10,13 +10,30 @@
 
   <header class="navbar">
     <h2 class="logo" onclick="showSection('home')">CourseApp</h2>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <nav id="main-nav">
-      <button class="nav-btn" onclick="showSection('home')">Dashboard</button>
-      <button class="nav-btn" onclick="showSection('add')">Add Course</button>
-      <button class="nav-btn" onclick="showSection('courses')">Manage List</button>
+
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+    <nav id="mainNav">
+      <button class="nav-close" id="navClose" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <button class="nav-btn active" data-section="home" onclick="showSection('home')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-btn" data-section="add" onclick="showSection('add')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Add Course
+      </button>
+      <button class="nav-btn" data-section="courses" onclick="showSection('courses')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        Manage List
+      </button>
     </nav>
   </header>
 
@@ -95,20 +112,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('main-nav');
-      const hamburger = document.getElementById('hamburger');
-      nav.classList.toggle('open');
-      hamburger.classList.toggle('active');
-    }
-    // Close menu when a nav button is clicked
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.getElementById('main-nav').classList.remove('open');
-        document.getElementById('hamburger').classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>

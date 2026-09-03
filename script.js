@@ -3,18 +3,46 @@ const courseList = document.getElementById("courseList");
 const form = document.getElementById("courseForm");
 const formTitle = document.getElementById("formTitle");
 
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+const navBackdrop = document.getElementById("navBackdrop");
+const navClose = document.getElementById("navClose");
+const navButtons = document.querySelectorAll(".nav-btn");
+
 document.addEventListener("DOMContentLoaded", () => {
   updateDashboard();
   showSection('home');
 });
 
+function openMenu() {
+  mainNav.classList.add("open");
+  navBackdrop.classList.add("open");
+  menuToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeMenu() {
+  mainNav.classList.remove("open");
+  navBackdrop.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+}
+
+menuToggle.addEventListener("click", openMenu);
+navClose.addEventListener("click", closeMenu);
+navBackdrop.addEventListener("click", closeMenu);
+
+
 function showSection(id) {
   sections.forEach(sec => sec.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 
+   navButtons.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.section === id);
+  });
+
   if (id === "courses") renderCourses();
   if (id === "home") updateDashboard();
   
+  closeMenu();
   window.scrollTo(0, 0);
 }
 
